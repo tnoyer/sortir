@@ -36,12 +36,6 @@ public class User {
     @Column(name="phone_number", nullable = true, length = 15)
     private String phoneNumber;
     
-    @Column(nullable = false)
-    private boolean actif;
-    
-    @Column(name = "confirmation_token")
-	private String confirmationToken;
-    
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "auth_user_role", joinColumns = @JoinColumn(name = "auth_user_id"), inverseJoinColumns = @JoinColumn(name = "auth_role_id"))
     private Set<Role> roles;
@@ -52,17 +46,16 @@ public class User {
 		super();
 	}
 	
-	public User(String email, String password, String firstName, String lastName, String phoneNumber, boolean actif) {
+	public User(String email, String password, String firstName, String lastName, String phoneNumber) {
 		super();
 		this.email = email;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.phoneNumber = phoneNumber;
-		this.actif = actif;
 	}
 	
-	public User(Long id, String email, String password, String firstName, String lastName, String phoneNumber, boolean actif) {
+	public User(Long id, String email, String password, String firstName, String lastName, String phoneNumber) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -70,7 +63,6 @@ public class User {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.phoneNumber = phoneNumber;
-		this.actif = actif;
 	}
 	
 	//getters & setters
@@ -122,14 +114,6 @@ public class User {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	
-	public boolean isActif() {
-		return actif;
-	}
-
-	public void setActif(boolean actif) {
-		this.actif = actif;
-	}
 
 	public Set<Role> getRoles() {
 		return roles;
@@ -137,13 +121,5 @@ public class User {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
-	}
-
-	public String getConfirmationToken() {
-		return confirmationToken;
-	}
-
-	public void setConfirmationToken(String confirmationToken) {
-		this.confirmationToken = confirmationToken;
 	}
 }

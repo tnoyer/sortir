@@ -26,10 +26,6 @@ public class UserService {
 		return user;
 	}
 	
-	public Optional<User> findByConfirmationToken(String confirmationToken) {
-		return userRepository.findByConfirmationToken(confirmationToken);
-	}
-	
 	public void saveUser(User user) {
 		final User userExist = userRepository.findByEmail(user.getEmail());
 		/*
@@ -39,4 +35,5 @@ public class UserService {
 		*/
 		userRepository.save(user);
 	}
+	
 }
