@@ -20,7 +20,7 @@ public class UserRepositoryTests {
 
 	@Autowired
     private TestEntityManager entityManager;
-     
+    
     @Autowired
     private UserRepository repo;
     
@@ -33,12 +33,11 @@ public class UserRepositoryTests {
         user.setPassword("theo49");
         user.setFirstName("theo");
         user.setLastName("noyer");
-        user.setActif(true);
-         
+        
         User savedUser = repo.save(user);
-         
+        
         User existUser = entityManager.find(User.class, savedUser.getId());
-         
+        
         assertThat(user.getEmail()).isEqualTo(existUser.getEmail());
          
     }

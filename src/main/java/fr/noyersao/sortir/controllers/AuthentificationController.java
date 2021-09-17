@@ -54,7 +54,7 @@ public class AuthentificationController {
 		    
 		    //hash password
 		    user.setPassword(passwordEncoder.encode(user.getPassword()));
-		        
+		    
 		    //save user in database
 		    userService.saveUser(user);
 			
@@ -67,11 +67,4 @@ public class AuthentificationController {
 
 		return "account/login_form";
 	}
-	
-	/*
-	@PostMapping(/process_login)
-	public String processLogin() {
-		
-	}
-	*/
 }
