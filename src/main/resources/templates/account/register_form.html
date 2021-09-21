@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Sortir - Register</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+	integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+	crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+	crossorigin="anonymous"></script>
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="register-form">
+
+					<form th:action="@{/process_register}" th:object="${user}"
+						method="post" style="max-width: 600px; margin: 0 auto;"
+						class="register-box">
+
+						<h1>Sign Up</h1>
+
+						<div th:if="${alreadyRegisteredMessage}"
+							class="alert alert-success" role="alert"
+							th:text=${alreadyRegisteredMessage}></div>
+
+						<div th:if="${errorMessage}" class="alert alert-danger"
+							role="alert" th:text="${errorMessage}"></div>
+							
+						<div th:if="${confirmationMessage}" class="alert alert-success"
+          					role="alert" th:text=${confirmationMessage}></div>
+
+						<input type="text"
+							th:field="*{firstName}" th:placeholder="'First Name'"
+							class="form-control" required minlength="2" maxlength="20" /> 
+							
+						<input
+							type="text" th:field="*{lastName}" th:placeholder="'Last Name'"
+							class="form-control" required minlength="2" maxlength="20" /> 
+							
+						<input type="email" th:field="*{email}" th:placeholder="E-mail"
+							class="form-control" required /> 
+							
+						<input
+							type="password" th:field="*{password}" th:placeholder="Password"
+							class="form-control" required minlength="6" maxlength="10" /> 
+
+						<div>
+							<input type="submit" class="btn btn-primary" value="Sign Up">
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
